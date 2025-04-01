@@ -1,0 +1,129 @@
+/* src/styles/ContactPage.css */
+
+/* Assumes variables --primary-color, etc., are defined globally */
+
+.contactSection {
+  /* Remove min-height and flex centering for the section itself */
+  /* min-height: 75vh; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  /* Keep padding and max-width */
+  padding: var(--spacing-xl, 48px) var(--spacing-md, 16px);
+  max-width: 1100px; /* Allow more width for two columns */
+  margin: var(--spacing-lg, 32px) auto;
+}
+
+.contactLayout {
+  display: flex;
+  flex-direction: row; /* Default side-by-side */
+  gap: var(--spacing-xl, 48px); /* Gap between columns */
+  align-items: flex-start; /* Align tops of columns */
+}
+
+.contactInfoCol {
+  flex: 1; /* Take up half the space (adjust ratio if needed, e.g., flex: 2;) */
+  /* Text alignment for content within this column */
+  text-align: left;
+}
+
+.contactFormCol {
+  flex: 1; /* Take up half the space */
+}
+
+/* Styles for elements moved into the Info Column */
+.contactInfoCol h2 {
+  font-family: var(--heading-font, "Poppins", sans-serif);
+  font-size: 2.5rem;
+  color: var(--text-color-dark, #212529);
+  margin-bottom: var(--spacing-md, 16px);
+}
+
+.contactInfoCol .contactIntro {
+  font-family: var(--body-font, "Roboto", sans-serif);
+  color: var(--secondary-color, #6c757d);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: var(--spacing-lg, 32px);
+}
+
+/* Styles for Direct Links now in the left column */
+.contactDirectLinks {
+  display: flex;
+  flex-direction: column; /* Stack links vertically */
+  gap: var(--spacing-md, 16px); /* Space between links */
+  /* Remove footer-like styles */
+  /* border-top: none; */
+  /* padding-top: 0; */
+  /* margin-top: 0; */
+}
+
+.contactItem {
+  /* Styles for individual link items */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm, 8px);
+}
+
+.contactIcon {
+  font-size: 1.5rem;
+  color: var(--primary-color, #007bff);
+  width: 24px; /* Give icon fixed width for alignment */
+  text-align: center;
+}
+
+.contactLink {
+  font-family: var(--body-font, "Roboto", sans-serif);
+  font-size: 1.05rem; /* Slightly larger link text */
+  color: var(--text-color-dark, #333); /* Use standard text color or primary */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-speed, 0.2s) var(--transition-ease, ease);
+}
+
+.contactLink:hover {
+  color: var(--primary-color, #007bff);
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* --- Styles for the Form Column --- */
+/* The form itself is styled by ContactForm.css */
+/* No specific styles needed for .contactFormCol unless adding background/padding */
+
+/* --- Responsiveness: Stack columns on smaller screens --- */
+@media (max-width: 992px) {
+  /* Adjust breakpoint as needed */
+  .contactLayout {
+    flex-direction: column; /* Stack columns */
+    gap: var(--spacing-xl, 48px); /* Adjust gap for vertical stacking */
+  }
+
+  .contactInfoCol,
+  .contactFormCol {
+    flex-basis: auto; /* Reset flex basis */
+    width: 100%; /* Take full width when stacked */
+  }
+
+  .contactInfoCol {
+    text-align: center; /* Center text when stacked */
+  }
+
+  .contactDirectLinks {
+    align-items: center; /* Center links when stacked */
+  }
+
+  .contactSection {
+    padding: var(--spacing-lg) var(--spacing-md); /* Adjust padding */
+  }
+}
+
+@media (max-width: 768px) {
+  .contactInfoCol h2 {
+    font-size: 2rem;
+  }
+  .contactInfoCol .contactIntro {
+    font-size: 1rem;
+  }
+}

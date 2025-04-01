@@ -1,0 +1,176 @@
+/* src/styles/ProjectCard.css */
+
+/* Assumes variables --primary-color, etc., are defined globally in index.css */
+
+/* --- Keyframe Animations (Define here if not global) --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Base Card Style --- */
+.projectCard {
+  background-color: var(--background-card, #ffffff);
+  border-radius: var(--border-radius-md, 8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden; /* Important for revealing content and image clipping */
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-speed-slow, 0.3s)
+      var(--transition-ease-out),
+    box-shadow var(--transition-speed-slow, 0.3s) var(--transition-ease-out);
+  border: 1px solid var(--border-color, #eee); /* Consistent subtle border */
+  position: relative;
+
+  /* Animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s var(--transition-ease-out) forwards;
+  /* NOTE: Staggered delay needs JS for reliable grid implementation */
+  /* Example: animation-delay: calc(0.1s * var(--item-index, 1)); Needs JS to set --item-index */
+}
+
+/* --- Hover State --- */
+.projectCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg, 0 10px 30px rgba(0, 0, 0, 0.15));
+}
+
+/* --- Image Section --- */
+.projectImageContainer {
+  /* Optional wrapper */
+  position: relative;
+  overflow: hidden; /* Clip zooming image */
+}
+
+.projectImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-speed-slow, 0.3s)
+    var(--transition-ease-out);
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.05); /* Subtle zoom on card hover */
+}
+
+/* --- Info Section --- */
+.projectInfo {
+  padding: var(--spacing-lg, 32px); /* Generous padding */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Ensure it fills space */
+}
+
+.projectInfo h3 {
+  font-family: var(--heading-font, "Poppins", sans-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color-dark, #212529);
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm, 8px);
+}
+
+.projectDescription {
+  font-family: var(--body-font, "Roboto", sans-serif);
+  font-size: 0.95rem;
+  color: var(--secondary-color, #6c757d);
+  line-height: 1.6;
+  flex-grow: 1; /* Takes up space to push links down */
+  margin-bottom: var(--spacing-md, 16px);
+}
+
+/* --- Tech Stack Section --- */
+.projectTechStack {
+  margin-bottom: var(--spacing-md, 16px);
+}
+
+.projectTechStack strong {
+  font-family: var(--body-font, "Roboto", sans-serif);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-color-dark, #212529);
+  margin-bottom: var(--spacing-sm, 8px);
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.projectTechStack ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing-sm) / 1.5);
+}
+
+.projectTechStack li {
+  font-family: var(--body-font, "Roboto", sans-serif);
+  font-size: 0.8rem;
+  background-color: rgba(0, 123, 255, 0.08);
+  color: var(--primary-color, #007bff);
+  padding: calc(var(--spacing-sm) / 3) calc(var(--spacing-sm));
+  border-radius: var(--border-radius-sm, 4px);
+  font-weight: 500;
+}
+
+/* --- Links Section (Reveal on Hover) --- */
+.projectLinks {
+  margin-top: auto; /* Push to bottom */
+  padding-top: var(--spacing-md, 16px);
+  border-top: 1px solid var(--border-color, #eee);
+  display: flex;
+  gap: var(--spacing-md, 16px);
+
+  /* Hide initially */
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity var(--transition-speed-slow) var(--transition-ease-out)
+      0.1s,
+    /* Delay opacity slightly */ max-height var(--transition-speed-slow)
+      var(--transition-ease-out);
+}
+
+/* Show on card hover */
+.projectCard:hover .projectLinks {
+  opacity: 1;
+  max-height: 100px; /* Adjust if more space needed */
+}
+
+/* --- Link Button Styling --- */
+.projectLinkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing-sm) / 2);
+  font-family: var(--body-font, "Roboto", sans-serif);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--primary-color, #007bff);
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-speed) var(--transition-ease),
+    color var(--transition-speed) var(--transition-ease),
+    border-color var(--transition-speed) var(--transition-ease);
+}
+
+.projectLinkButton:hover {
+  background-color: rgba(0, 123, 255, 0.08);
+  color: var(--primary-color-dark, #0056b3);
+  border-color: rgba(0, 123, 255, 0.3);
+  text-decoration: none;
+}
+
+/* Style for icons if using react-icons */
+/* .projectLinkButton svg { margin-right: 4px; font-size: 1.1em; } */

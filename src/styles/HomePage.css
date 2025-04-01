@@ -1,0 +1,279 @@
+/* src/styles/HomePage.css */
+
+/* --- Keyframe Animations --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  } /* Slightly less distance */
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  } /* Slightly less distance */
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Main Layout --- */
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 90vh;
+  width: 100%;
+  padding: var(--spacing-xl, 48px) var(--spacing-lg, 32px);
+  background-color: var(--background-light);
+  overflow: hidden; /* Prevent scrollbars from animations */
+}
+
+.fullPageContent {
+  flex: 1;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-right: var(--spacing-xl, 48px);
+}
+
+/* --- Typography & Content Styling --- */
+.fullPageContent h1 {
+  font-family: var(--heading-font);
+  font-size: 3.8rem; /* Adjust size as preferred */
+  font-weight: 700;
+  color: var(--text-color-dark);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.1;
+  /* Animation */
+  opacity: 0; /* Start hidden */
+  animation: slideInUp 0.7s var(--transition-ease-out) 0.1s forwards;
+}
+
+.fullPageContent p {
+  font-family: var(--body-font);
+  font-size: 1.15rem;
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-lg); /* Space before button */
+  line-height: 1.7;
+  /* Animation */
+  opacity: 0; /* Start hidden */
+  animation: slideInUp 0.7s var(--transition-ease-out) 0.2s forwards;
+}
+
+/* src/styles/HomePage.css */
+
+/* --- Call to Action Button Styling --- */
+.ctaButton {
+  /* Appearance */
+  display: inline-block; /* Important for Link/a styling */
+  background-color: var(--primary-color, #007bff);
+  color: var(--text-color-light, #f8f9fa);
+  border: none;
+  border-radius: var(--border-radius-sm, 4px);
+  padding: var(--spacing-md, 16px) var(--spacing-lg, 32px); /* Generous padding */
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(0, 0, 0, 0.075));
+
+  /* Typography */
+  font-family: var(--heading-font, "Poppins", sans-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none; /* Remove underline from Link */
+  text-align: center;
+
+  /* Interaction */
+  cursor: pointer;
+  transition: background-color var(--transition-speed, 0.2s)
+      var(--transition-ease, ease),
+    transform var(--transition-speed, 0.2s) var(--transition-ease, ease),
+    box-shadow var(--transition-speed, 0.2s) var(--transition-ease, ease);
+
+  /* Animation */
+  opacity: 0; /* Start hidden */
+  animation: slideInUp 0.7s var(--transition-ease-out) 0.3s forwards;
+}
+
+.ctaButton:hover {
+  background-color: var(--primary-color-dark, #0056b3); /* Darker background */
+  transform: translateY(-3px) scale(1.03); /* Lift and slightly enlarge */
+  box-shadow: var(
+    --shadow-md,
+    0 4px 10px rgba(0, 0, 0, 0.1)
+  ); /* Enhance shadow */
+}
+
+/* --- Remember to define keyframes (if not already done globally) --- */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .ctaButton {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+  }
+}
+
+/* src/styles/HomePage.css */
+
+/* --- Profile Image Styling --- */
+.landingProfilePhoto {
+  /* Size */
+  width: 300px; /* Adjust size as desired */
+  height: 300px;
+
+  /* Shape & Appearance */
+  border-radius: var(--border-radius-lg, 50%); /* Make it a circle */
+  object-fit: cover; /* Prevent image distortion if not square */
+  object-position: center; /* Show center of image */
+  border: 7px solid var(--background-card, #ffffff); /* Creates a solid border using card background color (often white) */
+  box-shadow: var(--shadow-lg, 0 6px 20px rgba(0, 0, 0, 0.15)); /* Add depth */
+
+  /* Effects & Animation */
+  transition: transform var(--transition-speed-slow, 0.3s)
+      var(--transition-ease, ease),
+    box-shadow var(--transition-speed-slow, 0.3s) var(--transition-ease, ease);
+  opacity: 0; /* Start hidden for animation */
+  /* Choose one animation: */
+  /* animation: fadeIn 1s var(--transition-ease-out) 0.2s forwards; */
+  animation: slideInRight 0.8s var(--transition-ease-out) 0.2s forwards;
+}
+
+.landingProfilePhoto:hover {
+  transform: scale(1.05); /* Slightly enlarge image on hover */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+/* --- Remember to define keyframes (if not already done globally) --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Responsive adjustments for the photo --- */
+@media (max-width: 992px) {
+  .landingProfilePhoto {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .landingProfilePhoto {
+    width: 220px;
+    height: 220px;
+    margin-bottom: var(--spacing-md, 16px);
+    /* Adjust animation if needed for column layout */
+    animation-name: slideInUp; /* Example: Use slideInUp when stacked */
+  }
+  /* Define slideInUp if not already defined */
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 992px) {
+  .mainContainer {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+  .fullPageContent {
+    padding-right: var(--spacing-lg);
+  }
+  .landingProfilePhoto {
+    width: 250px;
+    height: 250px;
+  }
+  .fullPageContent h1 {
+    font-size: 3rem;
+  }
+  .fullPageContent p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    flex-direction: column-reverse;
+    text-align: center;
+    min-height: auto; /* Allow height to adjust */
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .fullPageContent {
+    align-items: center; /* Center content */
+    padding-right: 0;
+    max-width: 100%;
+    margin-top: var(--spacing-lg);
+  }
+
+  .landingProfilePhoto {
+    width: 220px;
+    height: 220px;
+    margin-bottom: var(--spacing-md); /* Add space below image when stacked */
+    /* Adjust animation if needed for column layout */
+    animation-name: slideInUp; /* Example: Slide up instead of right */
+  }
+
+  .fullPageContent h1 {
+    font-size: 2.5rem;
+    /* Reset animation if needed for stacking */
+    animation-name: slideInUp;
+  }
+  .fullPageContent p {
+    font-size: 1rem;
+    /* Reset animation if needed for stacking */
+    animation-name: slideInUp;
+  }
+  .ctaButton {
+    /* Reset animation if needed for stacking */
+    animation-name: slideInUp;
+  }
+}

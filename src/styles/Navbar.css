@@ -1,0 +1,100 @@
+/* Assumes variables like --primary-color, --text-color-dark, --card-background, etc. are defined in :root */
+
+.navbarTop {
+  display: flex; /* Arrange logo (if added) and nav list */
+  justify-content: space-between; /* Pushes logo and nav list apart */
+  align-items: center; /* Vertically aligns items */
+  padding: var(--spacing-sm) var(--spacing-lg); /* Vertical Horizontal padding */
+  background-color: var(
+    --card-background,
+    #ffffff
+  ); /* Use variable, fallback to white */
+  position: sticky; /* Stick to top on scroll */
+  top: 0;
+  z-index: 1000; /* Ensure it stays on top */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+  overflow: visible; /* Change from hidden unless specifically needed */
+}
+
+/* Optional: Style for a logo/brand name if you add one */
+.navbarBrand {
+  font-family: var(--heading-font, "Poppins", sans-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color, blue);
+  text-decoration: none; /* If it's a link */
+}
+
+.navbarInside {
+  display: flex; /* Keep items in a row */
+  /* justify-content: flex-end; */ /* Example: push links to the right if logo exists */
+  list-style: none;
+  margin: 0; /* Remove default ul margin */
+  padding: 0; /* Remove default ul padding */
+}
+
+.navbarItem {
+  margin-left: var(--spacing-md); /* Space between nav items */
+}
+
+/* Style the actual links */
+.navbarLink {
+  display: inline-block; /* Allows padding */
+  padding: var(--spacing-sm) var(--spacing-md); /* Clickable area */
+  color: var(--text-color-dark, #333);
+  font-family: var(--body-font, sans-serif); /* Use a readable font */
+  font-size: 1rem; /* More standard size */
+  font-weight: 600; /* Semi-bold */
+  text-decoration: none; /* Remove underline */
+  border-radius: var(--border-radius-sm); /* Optional: subtle rounding */
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease; /* Define transitions */
+}
+
+.navbarLink:hover {
+  color: var(--primary-color, blue);
+  background-color: rgba(
+    0,
+    123,
+    255,
+    0.1
+  ); /* Optional: subtle background on hover */
+  transform: translateY(-2px); /* Add the scale or a different effect */
+  /* transform: scale(1.05); */ /* Alternative hover effect */
+}
+
+/* Optional: Style for an 'active' link (requires JS/library to set class) */
+.navbarLink.active {
+  color: var(--primary-color, blue);
+  font-weight: 700;
+  border-bottom: 2px solid var(--primary-color, blue); /* Example active indicator */
+  border-radius: 0; /* Remove radius if using border */
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+  .navbarTop {
+    padding: var(--spacing-sm) var(--spacing-md); /* Adjust padding */
+    /* Add styles here later if implementing a hamburger menu */
+  }
+
+  .navbarItem {
+    margin-left: var(--spacing-sm); /* Reduce space between items */
+  }
+
+  .navbarLink {
+    font-size: 0.95rem; /* Slightly smaller font on mobile */
+    padding: var(--spacing-sm);
+  }
+
+  /* Hide text links and show hamburger icon (requires more setup) */
+  /* .navbarInside { display: none; } */
+  /* .hamburgerIcon { display: block; } */
+}
+
+/* Remove the old :hover rule if not used */
+/*
+.selectedList:hover {
+  transform: scale(1.11);
+  transition-duration: 126ms;
+}
+*/

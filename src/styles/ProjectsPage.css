@@ -1,0 +1,199 @@
+/* src/styles/ProjectsPage.css */
+
+/* Assumes variables like --primary-color, etc., are defined globally in index.css */
+
+/* --- Keyframe Animations (Define here if not global) --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Section Styling --- */
+.projectsSection {
+  /* Subtle gradient background */
+  background-image: linear-gradient(
+    to bottom,
+    var(--background-light, #f8f9fa) 80%,
+    #e9ecef
+  );
+  padding: var(--spacing-xl, 48px) var(--spacing-md, 16px);
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Contain pseudo-elements if used */
+}
+
+/* --- Section Heading --- */
+.projectsSection h2 {
+  font-family: var(--heading-font, "Poppins", sans-serif);
+  font-size: 2.8rem;
+  font-weight: 700; /* Ensure boldness */
+  color: var(--text-color-dark, #212529);
+  margin-bottom: var(--spacing-md, 16px);
+  position: relative;
+  display: inline-block; /* Needed for pseudo-element width */
+  padding-bottom: 10px; /* Space for underline */
+}
+
+/* Underline Accent for Heading */
+.projectsSection h2::after {
+  content: "";
+  position: absolute;
+  width: 60%; /* Width of underline */
+  height: 4px; /* Thickness */
+  bottom: 0; /* Position right below text */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color, #007bff);
+  border-radius: 2px;
+}
+
+/* --- Section Intro Text --- */
+.projectsIntro {
+  font-family: var(--body-font, "Roboto", sans-serif);
+  color: var(--secondary-color, #6c757d);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: var(--spacing-lg, 32px) auto var(--spacing-xl, 48px) auto; /* Vertical margins */
+  line-height: 1.7;
+}
+
+/* --- Projects Grid Layout --- */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(320px, 1fr)
+  ); /* Responsive columns */
+  gap: var(--spacing-xl, 48px); /* Increase gap between cards */
+  max-width: 1200px;
+  margin: 0 auto; /* Center grid */
+  text-align: left; /* Reset text align for cards */
+}
+
+/* --- Certifications Section Container --- */
+.certificationsContainer {
+  margin: var(--spacing-xl, 48px) auto 0 auto; /* Top margin, center */
+  padding: var(--spacing-xl, 48px) 0; /* Vertical padding */
+  /* Optional dividing line/gradient */
+  border-top: 1px solid var(--border-color, #eee);
+  /* background-image: linear-gradient(to top, var(--background-light, #f8f9fa) 80%, #e9ecef); */
+  max-width: 900px;
+  position: relative;
+}
+
+/* --- Certifications Heading --- */
+.certificationsHeading {
+  font-family: var(--heading-font, "Poppins", sans-serif);
+  font-size: 2.2rem;
+  color: var(--text-color-dark, #212529);
+  margin-bottom: var(--spacing-lg, 32px);
+  text-align: center;
+}
+
+/* --- Certifications Grid/List --- */
+.certificationsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto; /* Center list */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg, 32px); /* Increased gap */
+  max-width: 900px; /* Match container width */
+}
+
+/* --- Individual Certification Item --- */
+.certificationItem {
+  background-color: var(--background-card, #ffffff);
+  padding: var(--spacing-md, 16px);
+  border-radius: var(--border-radius-md, 8px);
+  border: 1px solid var(--border-color, #eee);
+  border-left: 5px solid var(--primary-color, #007bff); /* Accent border */
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(0, 0, 0, 0.075));
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-sm, 8px));
+  text-align: left;
+  transition: transform var(--transition-speed-slow, 0.3s)
+      var(--transition-ease-out),
+    box-shadow var(--transition-speed-slow, 0.3s) var(--transition-ease-out),
+    border-color var(--transition-speed-slow, 0.3s) var(--transition-ease-out);
+
+  /* Animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s var(--transition-ease-out) forwards;
+  /* NOTE: Staggered delay needs JS for reliable grid implementation */
+  /* Example: animation-delay: calc(0.1s * var(--item-index, 1)); Needs JS to set --item-index */
+}
+
+.certificationItem:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--shadow-md, 0 4px 10px rgba(0, 0, 0, 0.1));
+  border-color: var(--primary-color, #007bff); /* Highlight border on hover */
+}
+
+.certificationDetails {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-sm, 8px) / 2);
+}
+
+.certificationName {
+  font-family: var(--body-font, "Roboto", sans-serif);
+  font-weight: 600;
+  font-size: 1.05rem; /* Increased size */
+  color: var(--text-color-dark, #212529);
+}
+
+.certificationIssuer,
+.certificationDate {
+  font-family: var(--body-font, "Roboto", sans-serif);
+  font-size: 0.9rem;
+  color: var(--secondary-color, #6c757d);
+}
+
+.certificationLink {
+  font-family: var(--body-font, "Roboto", sans-serif);
+  font-size: 0.9rem; /* Increased size */
+  font-weight: 500;
+  color: var(--primary-color, #007bff);
+  text-decoration: none;
+  margin-top: var(--spacing-sm, 8px);
+  display: inline-block;
+  transition: color var(--transition-speed, 0.2s) var(--transition-ease, ease);
+}
+
+.certificationLink:hover {
+  color: var(--primary-color-dark, #0056b3);
+  text-decoration: underline;
+}
+
+/* --- ProjectsPage Responsiveness --- */
+@media (max-width: 768px) {
+  .projectsSection h2 {
+    font-size: 2.2rem;
+  }
+  .projectsIntro {
+    font-size: 1rem;
+  }
+  .projectsGrid {
+    gap: var(--spacing-lg);
+  } /* Adjust gap */
+
+  .certificationsContainer {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+  }
+  .certificationsHeading {
+    font-size: 1.8rem;
+  }
+  .certificationsList {
+    grid-template-columns: 1fr;
+  } /* Stack certs */
+}
