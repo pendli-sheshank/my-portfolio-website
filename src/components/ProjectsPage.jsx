@@ -30,6 +30,22 @@ const myProjectsData = [
     liveUrl: "Your Live Demo URL or null",
     imageUrl: null,
   },
+  {
+    title: "Your Project 3 Title",
+    description: "Your description for project 1...",
+    techStack: ["Tech A", "Tech B", "Tech C"],
+    repoUrl: "Your GitHub URL or null",
+    liveUrl: "Your Live Demo URL or null",
+    imageUrl: null,
+  },
+  {
+    title: "Your Project 3 Title",
+    description: "Your description for project 1...",
+    techStack: ["Tech A", "Tech B", "Tech C"],
+    repoUrl: "Your GitHub URL or null",
+    liveUrl: "Your Live Demo URL or null",
+    imageUrl: null,
+  },
   // ... more projects
 ];
 // --- !!! END OF PROJECT DATA !!! ---
