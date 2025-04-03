@@ -1,6 +1,19 @@
 /* src/styles/HomePage.css */
 
+/* Assumes variables like --primary-color, etc., are defined globally in index.css */
+
 /* --- Keyframe Animations --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -10,270 +23,249 @@
   }
 }
 
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  } /* Slightly less distance */
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes slideInRight {
   from {
     opacity: 0;
     transform: translateX(40px);
-  } /* Slightly less distance */
+  }
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-/* --- Main Layout --- */
-.mainContainer {
+/* Optional morphing animation for the blob */
+@keyframes morph {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+/* --- Main Hero Layout --- */
+.heroContainer {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  min-height: 90vh;
+  justify-content: center; /* Center content horizontally */
+  min-height: 90vh; /* Ensure it takes height */
   width: 100%;
   padding: var(--spacing-xl, 48px) var(--spacing-lg, 32px);
-  background-color: var(--background-light);
-  overflow: hidden; /* Prevent scrollbars from animations */
+  background-color: var(--background-light, #f8f9fa);
+  overflow: hidden; /* Prevent scrollbars from animations/shapes */
 }
 
-.fullPageContent {
-  flex: 1;
-  max-width: 650px;
+.heroContent {
+  display: flex;
+  flex-direction: row; /* Side-by-side on desktop */
+  align-items: center;
+  justify-content: space-between; /* Space between text and image */
+  gap: var(--spacing-xl, 48px); /* Gap between columns */
+  max-width: 1100px; /* Container max width */
+  width: 100%;
+}
+
+/* --- Left Column: Text --- */
+.heroText {
+  flex: 1; /* Adjust flex ratio if needed */
+  max-width: 550px; /* Max width for text block */
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding-right: var(--spacing-xl, 48px);
+  align-items: flex-start; /* Align text left */
 }
 
-/* --- Typography & Content Styling --- */
-.fullPageContent h1 {
-  font-family: var(--heading-font);
-  font-size: 3.8rem; /* Adjust size as preferred */
-  font-weight: 700;
-  color: var(--text-color-dark);
-  margin-bottom: var(--spacing-md);
-  line-height: 1.1;
-  /* Animation */
-  opacity: 0; /* Start hidden */
-  animation: slideInUp 0.7s var(--transition-ease-out) 0.1s forwards;
-}
-
-.fullPageContent p {
-  font-family: var(--body-font);
-  font-size: 1.15rem;
-  color: var(--secondary-color);
-  margin-bottom: var(--spacing-lg); /* Space before button */
-  line-height: 1.7;
-  /* Animation */
-  opacity: 0; /* Start hidden */
-  animation: slideInUp 0.7s var(--transition-ease-out) 0.2s forwards;
-}
-
-/* src/styles/HomePage.css */
-
-/* --- Call to Action Button Styling --- */
-.ctaButton {
-  /* Appearance */
-  display: inline-block; /* Important for Link/a styling */
-  background-color: var(--primary-color, #007bff);
-  color: var(--text-color-light, #f8f9fa);
-  border: none;
-  border-radius: var(--border-radius-sm, 4px);
-  padding: var(--spacing-md, 16px) var(--spacing-lg, 32px); /* Generous padding */
-  box-shadow: var(--shadow-sm, 0 2px 4px rgba(0, 0, 0, 0.075));
-
-  /* Typography */
+.heroGreeting {
   font-family: var(--heading-font, "Poppins", sans-serif);
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  text-decoration: none; /* Remove underline from Link */
-  text-align: center;
+  color: var(--secondary-color, #6c757d);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-sm, 8px);
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--transition-ease-out) 0.1s forwards;
+}
 
-  /* Interaction */
+.heroText h1 {
+  font-family: var(--heading-font, "Poppins", sans-serif);
+  font-size: 3.5rem; /* Adjust as needed */
+  font-weight: 700;
+  color: var(--text-color-dark, #212529);
+  margin-bottom: var(--spacing-sm, 8px);
+  line-height: 1.1;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--transition-ease-out) 0.2s forwards;
+}
+
+.heroRole {
+  font-family: var(--heading-font, "Poppins", sans-serif);
+  font-size: 1.8rem; /* Size for role */
+  font-weight: 400; /* Lighter weight */
+  color: var(--secondary-color, #6c757d);
+  margin-bottom: var(--spacing-lg, 32px);
+  line-height: 1.3;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--transition-ease-out) 0.3s forwards;
+}
+
+.heroDescription {
+  font-family: var(--body-font, "Roboto", sans-serif);
+  font-size: 1rem; /* Standard body size */
+  color: var(--secondary-color, #6c757d);
+  margin-bottom: var(--spacing-lg, 32px);
+  line-height: 1.7;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--transition-ease-out) 0.4s forwards;
+}
+
+/* --- Button Styles --- */
+.heroButtonGroup {
+  display: flex;
+  gap: var(--spacing-md, 16px); /* Space between buttons */
+  margin-top: var(--spacing-sm, 8px);
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--transition-ease-out) 0.5s forwards;
+}
+
+/* Base button style */
+.heroButtonPrimary,
+.heroButtonSecondary {
+  font-family: var(--heading-font, "Poppins", sans-serif);
+  border: 2px solid transparent; /* Base border */
+  padding: var(--spacing-sm) var(--spacing-lg); /* Adjust padding */
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm, 4px);
   cursor: pointer;
-  transition: background-color var(--transition-speed, 0.2s)
-      var(--transition-ease, ease),
-    transform var(--transition-speed, 0.2s) var(--transition-ease, ease),
-    box-shadow var(--transition-speed, 0.2s) var(--transition-ease, ease);
-
-  /* Animation */
-  opacity: 0; /* Start hidden */
-  animation: slideInUp 0.7s var(--transition-ease-out) 0.3s forwards;
+  text-decoration: none; /* For Links */
+  display: inline-block;
+  transition: all var(--transition-speed, 0.2s) var(--transition-ease);
+  box-shadow: var(--shadow-sm);
 }
 
-.ctaButton:hover {
-  background-color: var(--primary-color-dark, #0056b3); /* Darker background */
-  transform: translateY(-3px) scale(1.03); /* Lift and slightly enlarge */
-  box-shadow: var(
-    --shadow-md,
-    0 4px 10px rgba(0, 0, 0, 0.1)
-  ); /* Enhance shadow */
+/* Primary button style (Filled) */
+.heroButtonPrimary {
+  background-color: var(--primary-color, #6a4cec); /* Example Purple */
+  color: var(--text-color-light, #ffffff);
 }
 
-/* --- Remember to define keyframes (if not already done globally) --- */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.heroButtonPrimary:hover {
+  background-color: var(--primary-color-dark, #553ab6); /* Darker Purple */
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
-  .ctaButton {
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: 1rem;
-  }
+/* Secondary button style (Outline) */
+.heroButtonSecondary {
+  background-color: transparent;
+  color: var(--primary-color, #6a4cec);
+  border-color: var(--primary-color, #6a4cec);
 }
 
-/* src/styles/HomePage.css */
+.heroButtonSecondary:hover {
+  background-color: var(--primary-color, #6a4cec);
+  color: var(--text-color-light, #ffffff);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
 
-/* --- Profile Image Styling --- */
-.landingProfilePhoto {
-  /* Size */
-  width: 300px; /* Adjust size as desired */
-  height: 300px;
+/* --- Right Column: Image & Shape --- */
+.heroImageContainer {
+  flex: 1; /* Adjust ratio if needed */
+  max-width: 450px; /* Max width for image area */
+  position: relative; /* REQUIRED for the ::before pseudo-element */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  /* Shape & Appearance */
-  border-radius: var(--border-radius-lg, 50%); /* Make it a circle */
-  object-fit: cover; /* Prevent image distortion if not square */
-  object-position: center; /* Show center of image */
-  border: 7px solid var(--background-card, #ffffff); /* Creates a solid border using card background color (often white) */
-  box-shadow: var(--shadow-lg, 0 6px 20px rgba(0, 0, 0, 0.15)); /* Add depth */
-
-  /* Effects & Animation */
+/* Profile Photo (NO border) */
+.heroProfilePhoto {
+  width: 80%; /* Adjust size relative to container */
+  max-width: 300px; /* Max pixel size */
+  aspect-ratio: 1 / 1; /* Make it square for circle */
+  border-radius: var(--border-radius-lg, 50%); /* Keep Circle */
+  object-fit: cover;
+  object-position: center;
+  position: relative; /* Ensure image is above pseudo-element */
+  z-index: 1;
+  box-shadow: var(--shadow-lg); /* Keep shadow for depth */
   transition: transform var(--transition-speed-slow, 0.3s)
-      var(--transition-ease, ease),
-    box-shadow var(--transition-speed-slow, 0.3s) var(--transition-ease, ease);
-  opacity: 0; /* Start hidden for animation */
-  /* Choose one animation: */
-  /* animation: fadeIn 1s var(--transition-ease-out) 0.2s forwards; */
-  animation: slideInRight 0.8s var(--transition-ease-out) 0.2s forwards;
+      var(--transition-ease-out),
+    box-shadow var(--transition-speed-slow, 0.3s) var(--transition-ease-out);
+  opacity: 0; /* Keep for animation */
+  animation: fadeIn 0.8s var(--transition-ease-out) 0.4s forwards; /* Keep animation */
 }
 
-.landingProfilePhoto:hover {
-  transform: scale(1.05); /* Slightly enlarge image on hover */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+.heroProfilePhoto:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Remember to define keyframes (if not already done globally) --- */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* --- Responsive adjustments for the photo --- */
-@media (max-width: 992px) {
-  .landingProfilePhoto {
-    width: 250px;
-    height: 250px;
-  }
-}
-
-@media (max-width: 768px) {
-  .landingProfilePhoto {
-    width: 220px;
-    height: 220px;
-    margin-bottom: var(--spacing-md, 16px);
-    /* Adjust animation if needed for column layout */
-    animation-name: slideInUp; /* Example: Use slideInUp when stacked */
-  }
-  /* Define slideInUp if not already defined */
-  @keyframes slideInUp {
-    from {
-      opacity: 0;
-      transform: translateY(25px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+/* The Purple Blob Shape (Using ::before pseudo-element) */
+.heroImageContainer::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* Cover the container area */
+  z-index: 0; /* Position behind the image */
+  /* Approximate Blob Shape (TWEAK THESE VALUES!) */
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  /* Background Color/Gradient */
+  background: var(--primary-color, #6a4cec);
+  /* Example Gradient: */
+  /* background: linear-gradient(45deg, #8a6ff0, #6a4cec); */
+  /* Animation for the blob */
+  opacity: 0;
+  animation: fadeIn 1s var(--transition-ease-out) 0.2s forwards,
+    morph 8s ease-in-out infinite alternate; /* Subtle morphing */
 }
 
 /* --- Responsiveness --- */
 @media (max-width: 992px) {
-  .mainContainer {
-    padding: var(--spacing-xl) var(--spacing-md);
+  .heroContent {
+    gap: var(--spacing-lg);
   }
-  .fullPageContent {
-    padding-right: var(--spacing-lg);
-  }
-  .landingProfilePhoto {
-    width: 250px;
-    height: 250px;
-  }
-  .fullPageContent h1 {
+  .heroText h1 {
     font-size: 3rem;
   }
-  .fullPageContent p {
-    font-size: 1.1rem;
+  .heroRole {
+    font-size: 1.5rem;
+  }
+  .heroImageContainer {
+    max-width: 380px;
   }
 }
 
 @media (max-width: 768px) {
-  .mainContainer {
-    flex-direction: column-reverse;
+  .heroContent {
+    flex-direction: column-reverse; /* Stack image above text */
     text-align: center;
-    min-height: auto; /* Allow height to adjust */
-    padding: var(--spacing-xl) var(--spacing-md);
   }
-
-  .fullPageContent {
-    align-items: center; /* Center content */
-    padding-right: 0;
+  .heroText {
+    align-items: center; /* Center text content */
     max-width: 100%;
-    margin-top: var(--spacing-lg);
   }
-
-  .landingProfilePhoto {
-    width: 220px;
-    height: 220px;
-    margin-bottom: var(--spacing-md); /* Add space below image when stacked */
-    /* Adjust animation if needed for column layout */
-    animation-name: slideInUp; /* Example: Slide up instead of right */
+  .heroImageContainer {
+    margin-bottom: var(--spacing-lg); /* Space below image */
+    width: 70%; /* Adjust size */
+    max-width: 300px;
   }
-
-  .fullPageContent h1 {
+  .heroText h1 {
     font-size: 2.5rem;
-    /* Reset animation if needed for stacking */
-    animation-name: slideInUp;
   }
-  .fullPageContent p {
-    font-size: 1rem;
-    /* Reset animation if needed for stacking */
-    animation-name: slideInUp;
+  .heroRole {
+    font-size: 1.3rem;
   }
-  .ctaButton {
-    /* Reset animation if needed for stacking */
-    animation-name: slideInUp;
+  .heroButtonGroup {
+    justify-content: center;
+  } /* Center buttons */
+
+  /* Adjust blob size or disable morph on mobile if needed */
+  .heroImageContainer::before {
+    /* animation: fadeIn 1s var(--transition-ease-out) 0.2s forwards; */ /* Keep fade, maybe remove morph */
   }
 }

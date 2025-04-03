@@ -8,9 +8,9 @@ import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 
 const ContactPage = () => {
   // Replace with your actual details!
-  const yourEmail = "your.email@example.com";
+  const yourEmail = "psheshankreddy@gmail.com";
   const yourLinkedIn = "https://www.linkedin.com/in/psheshank";
-  const yourGitHub = "https://github.com/yourusername";
+  const yourGitHub = "https://github.com/pendli-sheshank";
 
   return (
     // Section remains the main container

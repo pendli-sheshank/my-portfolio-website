@@ -1,108 +1,89 @@
-// src/components/ProjectsPage.js
 import React from "react";
-import ProjectCard from "./ProjectCard"; // Import the card component
-import "../styles/ProjectsPage.css"; // We'll update this CSS file
+import ProjectCard from "./ProjectCard";
+import "../styles/ProjectsPage.css";
 
-// --- !!! REPLACE THIS WITH YOUR ACTUAL PROJECT DATA !!! ---
 const myProjectsData = [
-  // ... Your project objects from the previous step ...
   {
-    title: "Your Project 1 Title",
-    description: "Your description for project 1...",
-    techStack: ["Tech A", "Tech B", "Tech C"],
-    repoUrl: "Your GitHub URL or null",
-    liveUrl: "Your Live Demo URL or null",
+    title: "BeRightHere.com (Workspace Platform)",
+    description:
+      "Front-end development for a digital platform offering workspace and meeting space solutions. Created user interfaces and integrated back-end APIs for seamless operations using React JS, Laravel, MySQL, and AWS.", // Summarized [cite: 23, 24, 25]
+    techStack: [
+      "React JS",
+      "Laravel",
+      "MySQL",
+      "AWS",
+      "HTML",
+      "CSS",
+      "JavaScript",
+    ],
+    repoUrl: null,
+    liveUrl: null,
     imageUrl: null,
   },
   {
-    title: "Your Project 2 Title",
-    description: "Your description for project 1...",
-    techStack: ["Tech A", "Tech B", "Tech C"],
-    repoUrl: "Your GitHub URL or null",
-    liveUrl: "Your Live Demo URL or null",
+    title: "Nxt Trendz (E-commerce Clone)",
+    description:
+      "Clone of E-commerce platforms like Amazon/Flipkart. Implemented login, product lists with search/filters/sort, product details pages using React Router. Handled authentication/authorization using JWT, REST APIs, and local storage.", // Summarized [cite: 26, 27, 28]
+    techStack: [
+      "React JS",
+      "JS",
+      "CSS",
+      "Bootstrap",
+      "React Router",
+      "REST API",
+      "Local Storage",
+      "JWT",
+      "Authorization",
+      "Authentication",
+    ],
+    repoUrl: null,
+    liveUrl: "https://psrnxttrendz.ccbp.tech",
     imageUrl: null,
   },
   {
-    title: "Your Project 3 Title",
-    description: "Your description for project 1...",
-    techStack: ["Tech A", "Tech B", "Tech C"],
-    repoUrl: "Your GitHub URL or null",
-    liveUrl: "Your Live Demo URL or null",
+    title: "Typing Speed Test",
+    description:
+      "Application measuring time taken to type a given paragraph fetched via API. Implemented dynamic timer updates using JavaScript DOM operations and included form validations.", // Summarized [cite: 29, 30, 31, 32]
+    techStack: ["HTML", "CSS", "JS", "REST API", "Bootstrap"],
+    repoUrl: null,
+    liveUrl: "http://sheshanktptest.ccbp.tech",
     imageUrl: null,
   },
-  {
-    title: "Your Project 3 Title",
-    description: "Your description for project 1...",
-    techStack: ["Tech A", "Tech B", "Tech C"],
-    repoUrl: "Your GitHub URL or null",
-    liveUrl: "Your Live Demo URL or null",
-    imageUrl: null,
-  },
-  {
-    title: "Your Project 3 Title",
-    description: "Your description for project 1...",
-    techStack: ["Tech A", "Tech B", "Tech C"],
-    repoUrl: "Your GitHub URL or null",
-    liveUrl: "Your Live Demo URL or null",
-    imageUrl: null,
-  },
-  // ... more projects
 ];
-// --- !!! END OF PROJECT DATA !!! ---
-
-// --- !!! REPLACE THIS WITH YOUR ACTUAL CERTIFICATION DATA !!! ---
-// --- Paste this array into your src/components/ProjectsPage.js ---
-// --- replacing any previous version ---
-// --- Data extracted from the provided image ---
 
 const myCertificationsData = [
   {
     name: "Build Your Own Static Website",
     issuer: "NxtWave",
     date: "Issued May 2022",
-    // URL not visible in image, replace null if you have the link from "Show credential"
-    url: null,
-    // Note: Skills listed (Front-End Development, HTML) omitted from this structure
+    url: "https://certificates.ccbp.in/intensive/static-website?id=WLGMNPVLMT",
   },
   {
     name: "Developer Foundations",
     issuer: "NxtWave",
     date: "Issued May 2022",
-    // URL not visible in image, replace null if you have the link from "Show credential"
-    url: null,
+    url: "https://certificates.ccbp.in/intensive/developer-foundations?id=GSRHYZJCOZ",
   },
   {
     name: "Introduction to Databases",
     issuer: "NxtWave",
     date: "Issued May 2022",
-    // URL not visible in image, replace null if you have the link from "Show credential"
-    url: null,
+    url: "https://certificates.ccbp.in/intensive/introduction-to-databases?id=HFWKBQOYOQ",
   },
   {
     name: "Programming Foundations with Python",
     issuer: "NxtWave",
     date: "Issued May 2022",
-    // URL not visible in image, replace null if you have the link from "Show credential"
-    url: null,
-  },
-  {
-    name: "Bootcamp of 4.0 Technologies",
-    issuer: "NxtWave",
-    date: "Issued Jul 2021",
-    // URL not visible in image, replace null if you have the link from "Show credential"
-    url: null,
+    url: "https://certificates.ccbp.in/intensive/programming-foundations?id=JVKUENANGN",
   },
 ];
-// --- End of certification data ---
-// --- !!! END OF SAMPLE CERTIFICATION DATA !!! ---
 
 const ProjectsPage = () => {
   const projectsData = myProjectsData;
-  const certificationsData = myCertificationsData; // Use your actual data
+  const certificationsData = myCertificationsData;
 
   return (
     <section id="projects" className="projectsSection">
-      {/* Projects Section Title and Grid remain the same */}
       <h2>My Projects</h2>
       <p className="projectsIntro">
         Here are some of the projects I've worked on, showcasing my skills in
@@ -122,15 +103,12 @@ const ProjectsPage = () => {
         ))}
       </div>
 
-      {/* --- New Certifications Subsection --- */}
       {certificationsData.length > 0 && ( // Only show if there are certifications
         <div className="certificationsContainer">
           <h3 className="certificationsHeading">Licenses & Certifications</h3>
           <ul className="certificationsList">
             {certificationsData.map((cert, index) => (
               <li key={cert.name || index} className="certificationItem">
-                {/* Optional: Add logo image here if you have imageUrl */}
-                {/* {cert.imageUrl && <img src={cert.imageUrl} alt={`${cert.issuer} logo`} className="certIssuerLogo" />} */}
                 <div className="certificationDetails">
                   <span className="certificationName">{cert.name}</span>
                   <span className="certificationIssuer">
@@ -155,7 +133,6 @@ const ProjectsPage = () => {
           </ul>
         </div>
       )}
-      {/* --- End of Certifications Subsection --- */}
     </section>
   );
 };

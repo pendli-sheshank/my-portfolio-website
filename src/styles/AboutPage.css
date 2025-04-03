@@ -1,0 +1,329 @@
+/* src/styles/AboutPage.css */
+
+/* Assumes variables --primary-color, etc., are defined globally in index.css */
+
+/* --- Keyframe Animations --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseNode {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 8px rgba(0, 123, 255, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+  }
+}
+
+/* --- Base Section Styles --- */
+.aboutSection {
+  padding: var(--spacing-xl, 48px) var(--spacing-md, 16px);
+  max-width: 900px;
+  margin: var(--spacing-lg, 32px) auto;
+}
+
+/* --- Main Heading --- */
+.aboutSection h2 {
+  font-family: var(--heading-font, "Poppins", sans-serif);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--text-color-dark, #212529);
+  text-align: center;
+  margin-bottom: var(--spacing-lg, 32px);
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 10px; /* Space for underline */
+}
+
+/* Underline Accent for Heading */
+.aboutSection h2::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 4px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color, #007bff);
+  border-radius: 2px;
+}
+
+/* --- Summary Section --- */
+.summaryContainer {
+  background-color: rgba(255, 255, 255, 0.6); /* Subtle background */
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-xl, 48px);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color, #eee);
+
+  /* Animation */
+  opacity: 0;
+  animation: fadeInUp 0.7s var(--transition-ease-out) 0.2s forwards;
+}
+
+.summaryContainer p.aboutSummary {
+  font-family: var(--body-font, "Roboto", sans-serif);
+  font-size: 1.1rem;
+  color: var(--secondary-color, #6c757d);
+  line-height: 1.8;
+  text-align: left; /* Keep left aligned */
+  margin-bottom: var(--spacing-md, 16px);
+}
+
+.summaryContainer p.aboutSummary:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Timeline Section --- */
+.timelineContainer {
+  margin-top: var(--spacing-xl, 48px);
+}
+
+.timelineContainer h3 {
+  font-family: var(--heading-font, "Poppins", sans-serif);
+  font-size: 2rem;
+  color: var(--text-color-dark, #212529);
+  text-align: center;
+  margin-bottom: var(--spacing-lg, 32px);
+  padding-top: var(--spacing-lg, 32px);
+  border-top: 1px solid var(--border-color, #eee);
+}
+
+.timeline {
+  position: relative;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* Central Line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  background-image: linear-gradient(
+    to bottom,
+    var(--primary-color, #007bff),
+    rgba(0, 123, 255, 0.1)
+  );
+  opacity: 0.6;
+  border-radius: 3px;
+}
+
+/* Timeline Item Base */
+.timelineItem {
+  padding: var(--spacing-sm) 0;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+  margin-bottom: var(--spacing-lg);
+
+  /* Base Load-in Animation */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.7s var(--transition-ease-out) forwards;
+  /* For staggered delay add JS to set --delay based on index */
+  /* animation-delay: calc(0.15s * var(--delay-index, 1)); */
+}
+
+/* Alternating Sides */
+.timelineItem:nth-child(odd) {
+  left: 0;
+  padding-right: calc(var(--spacing-xl) + 10px);
+  text-align: right;
+}
+.timelineItem:nth-child(even) {
+  left: 50%;
+  padding-left: calc(var(--spacing-xl) + 10px);
+  text-align: left;
+}
+
+/* Timeline Node */
+.timelineNode {
+  position: absolute;
+  top: 20px; /* Align vertically */
+  width: 20px;
+  height: 20px;
+  background-color: var(--background-card, #ffffff);
+  border: 4px solid var(--primary-color, #007bff);
+  border-radius: 50%;
+  z-index: 1;
+  animation: pulseNode 2.5s infinite cubic-bezier(0.66, 0, 0, 1); /* Slightly slower pulse */
+}
+
+.timelineItem:nth-child(odd) .timelineNode {
+  right: -10px;
+  transform: translateX(50%);
+}
+.timelineItem:nth-child(even) .timelineNode {
+  left: -10px;
+  transform: translateX(-50%);
+}
+
+/* Timeline Content Box */
+.timelineContent {
+  background-color: var(--background-card, #ffffff);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  position: relative;
+  transition: transform var(--transition-speed-slow) var(--transition-ease-out),
+    box-shadow var(--transition-speed-slow) var(--transition-ease-out);
+}
+
+.timelineContent:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Arrow */
+.timelineContent::after {
+  content: "";
+  position: absolute;
+  top: 20px; /* Align with node */
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+.timelineItem:nth-child(odd) .timelineContent::after {
+  right: -10px;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent
+    var(--background-card, #ffffff);
+}
+.timelineItem:nth-child(even) .timelineContent::after {
+  left: -10px;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent var(--background-card, #ffffff) transparent
+    transparent;
+}
+
+/* Content Details */
+.timelineDate {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timelineTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: var(--heading-font);
+  color: var(--text-color-dark);
+  margin-bottom: calc(var(--spacing-sm) / 2);
+}
+
+.timelineSubtitle {
+  font-size: 1rem;
+  font-style: normal;
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.timelineDetailsList {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--spacing-sm);
+}
+
+.timelineDetailsList li {
+  font-size: 0.95rem;
+  color: var(--secondary-color);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-sm);
+  position: relative;
+  padding-left: 18px;
+}
+
+.timelineDetailsList li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.1em;
+  top: -1px;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+  /* Stack timeline items vertically */
+  .timeline::before {
+    left: 10px;
+  }
+  .timelineItem {
+    width: 100%;
+    padding-left: 45px;
+    padding-right: 0;
+    text-align: left;
+    left: 0 !important;
+  }
+  .timelineItem:nth-child(odd) {
+    padding-right: 0;
+  }
+  .timelineItem:nth-child(even) {
+    padding-left: 45px;
+  }
+  .timelineNode {
+    left: 0;
+  }
+  .timelineItem:nth-child(odd) .timelineNode,
+  .timelineItem:nth-child(even) .timelineNode {
+    left: 0;
+  }
+  /* Adjust arrow */
+  .timelineContent::after {
+    left: -10px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--background-card, #ffffff) transparent
+      transparent;
+  }
+  .timelineItem:nth-child(odd) .timelineContent::after {
+    right: auto;
+    left: -10px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--background-card, #ffffff) transparent
+      transparent;
+  }
+  /* Adjust heading sizes */
+  .aboutSection h2 {
+    font-size: 2.2rem;
+  }
+  .timelineContainer h3 {
+    font-size: 1.8rem;
+  }
+  .timelineTitle {
+    font-size: 1.15rem;
+  }
+  .summaryContainer {
+    padding: var(--spacing-md);
+  }
+  .aboutSummary {
+    font-size: 1rem;
+  }
+}

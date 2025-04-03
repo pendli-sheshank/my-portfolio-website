@@ -1,36 +1,51 @@
+// src/components/HomePage.js
 import React from "react";
-// Import Link if using the button to navigate
-import { Link } from "react-router-dom";
-import "../styles/HomePage.css"; // Import the CSS file
-import profilePic from "../assets/images/profilePic.jpg";
+import { Link } from "react-router-dom"; // Assuming buttons link internally
+import "../styles/HomePage.css";
+// Adjust the path and filename to match your actual image file
+import profilePic from "../assets/images/profilePic.jpg"; // Adjust if needed
 
 const HomePage = () => {
+  // Your actual intro text - keep it concise for this design
+  const introText =
+    "I'm a Software Engineer specializing in building dynamic and user-friendly web applications using React, JavaScript, and modern web technologies. Passionate about crafting clean code and engaging digital experiences.";
+
   return (
-    <main className="mainContainer">
+    // Using main tag is good practice
+    <main className="heroContainer">
       {" "}
-      {/* Use main if it's the main page content */}
-      <div className="fullPageContent">
-        <h1>Sheshank</h1>
-
-        <p>
-          Hello! I'm Sheshank, a Software Engineer specializing in building
-          dynamic and user-friendly web applications. With a strong foundation
-          in JavaScript and expertise in frameworks like React, I focus on
-          crafting clean, efficient code and engaging digital experiences.
-          Explore my projects to see my work in action.
-        </p>
-
-        {/* Optional: Call to Action Button */}
-        <Link to="/projects" className="ctaButton">
-          View My Projects
-        </Link>
+      {/* Changed class name for clarity */}
+      <div className="heroContent">
+        {" "}
+        {/* Changed class name */}
+        {/* Left Column Content */}
+        <div className="heroText">
+          <p className="heroGreeting">HELLO</p>
+          <h1>I'm Sheshank</h1>
+          <p className="heroRole">A Software Engineer</p> {/* Updated Role */}
+          <p className="heroDescription">
+            {introText} {/* Using a shorter version of your intro */}
+          </p>
+          <div className="heroButtonGroup">
+            {/* Use appropriate component (Link or button) and paths */}
+            <Link to="/contact" className="heroButtonPrimary">
+              Hire Me
+            </Link>
+            <Link to="/projects" className="heroButtonSecondary">
+              Portfolio
+            </Link>
+          </div>
+        </div>
+        {/* Right Column Image */}
+        <div className="heroImageContainer">
+          {/* The purple shape will be added via CSS pseudo-element */}
+          <img
+            className="heroProfilePhoto" // Changed class name
+            alt="Sheshank Pendli - Software Engineer"
+            src={profilePic}
+          />
+        </div>
       </div>
-      <img
-        className="landingProfilePhoto"
-        alt="Sheshank - Software Engineer" // Descriptive alt text
-        src={profilePic}
-        // Replace with your actual photo URL or import
-      />
     </main>
   );
 };
