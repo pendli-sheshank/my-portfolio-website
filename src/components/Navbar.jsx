@@ -10,9 +10,9 @@ const Navbar = ({ listOfOptions = [] }) => {
   console.log(listOfOptions);
   return (
     <nav className="navbarTop">
-      <a href="/" className="navbarBrand">
+      <Link to="/" className="navbarBrand">
         PSR
-      </a>
+      </Link>
 
       <ul className="navbarInside">
         {listOfOptions.map((option) => {
