@@ -1,52 +1,50 @@
 // src/components/HomePage.js
 import React from "react";
-import { Link } from "react-router-dom"; // Assuming buttons link internally
-import "../styles/HomePage.css";
-// Adjust the path and filename to match your actual image file
-import profilePic from "../assets/images/profilePic.jpg"; // Adjust if needed
+import { Link } from "react-router-dom"; // For buttons/links
+import "../styles/HomePage.css"; // Link to the new CSS file
+import profilePic from "../assets/images/profile.png"; // MAKE SURE this path is correct
 
 const HomePage = () => {
-  // Your actual intro text - keep it concise for this design
-  const introText =
-    "I'm a Software Engineer specializing in building dynamic and user-friendly web applications using React, JavaScript, and modern web technologies. Passionate about crafting clean code and engaging digital experiences.";
+  // Using concise summary text based on your resume [cite: 7]
+  const descriptionText =
+    "Front-end developer with 1.5 years of experience in ReactJS, HTML, CSS, and JavaScript, skilled in developing responsive interfaces and integrating APIs. Passionate about delivering high-quality work and engaging user experiences.";
 
   return (
-    // Using main tag is good practice
-    <main className="heroContainer">
-      {" "}
-      {/* Changed class name for clarity */}
-      <div className="heroContent">
-        {" "}
-        {/* Changed class name */}
-        {/* Left Column Content */}
-        <div className="heroText">
-          <p className="heroGreeting">HELLO</p>
-          <h1>I'm Sheshank</h1>
-          <p className="heroRole">A Software Engineer</p> {/* Updated Role */}
-          <p className="heroDescription">
-            {introText} {/* Using a shorter version of your intro */}
-          </p>
-          <div className="heroButtonGroup">
-            {/* Use appropriate component (Link or button) and paths */}
-            <Link to="/contact" className="heroButtonPrimary">
-              Hire Me
+    // Use a semantic tag like section for the hero area
+    <section className="heroSectionNew">
+      <div className="heroLayoutNew">
+        {/* --- Left Column: Text --- */}
+        <div className="heroTextNew">
+          {/* Removed accent line based on image */}
+          <p className="heroGreetingNew">HELLO</p>
+          <h1>
+            im Sheshank Pendli, <br /> a Software Engineer
+          </h1>
+          <p className="heroDescriptionNew">{descriptionText}</p>
+          <div className="heroButtonGroupNew">
+            <Link to="/contact" className="heroButtonNewPrimary">
+              contact me
             </Link>
-            <Link to="/projects" className="heroButtonSecondary">
-              Portfolio
+            <Link to="/projects" className="heroButtonNewSecondary">
+              browse portfolio
             </Link>
           </div>
         </div>
-        {/* Right Column Image */}
-        <div className="heroImageContainer">
-          {/* The purple shape will be added via CSS pseudo-element */}
-          <img
-            className="heroProfilePhoto" // Changed class name
-            alt="Sheshank Pendli - Software Engineer"
-            src={profilePic}
-          />
+
+        {/* --- Right Column: Image --- */}
+        <div className="heroImageContainerNew">
+          {/* Outer div creates the purple border */}
+          <div className="heroImageBorder">
+            {/* The actual photo */}
+            <img
+              className="heroProfilePhotoNew"
+              alt="Sheshank Pendli - Software Engineer"
+              src={profilePic} // Your imported photo
+            />
+          </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 

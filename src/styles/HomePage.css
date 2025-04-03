@@ -1,19 +1,9 @@
 /* src/styles/HomePage.css */
 
 /* Assumes variables like --primary-color, etc., are defined globally in index.css */
+/* Recommendation: Set --primary-color to a purple like #6a4cec */
 
-/* --- Keyframe Animations --- */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* --- Keyframe Animations (Optional Fade-in) --- */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -22,250 +12,204 @@
     opacity: 1;
   }
 }
-
-@keyframes slideInRight {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateX(40px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
-/* Optional morphing animation for the blob */
-@keyframes morph {
-  0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-  50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-  }
-  100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-}
-
-/* --- Main Hero Layout --- */
-.heroContainer {
+/* --- Main Section Layout --- */
+.heroSectionNew {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center content horizontally */
-  min-height: 90vh; /* Ensure it takes height */
+  justify-content: center;
+  min-height: 85vh; /* Adjust height as needed */
   width: 100%;
   padding: var(--spacing-xl, 48px) var(--spacing-lg, 32px);
-  background-color: var(--background-light, #f8f9fa);
-  overflow: hidden; /* Prevent scrollbars from animations/shapes */
+  background-color: var(--background-light, #ffffff);
 }
 
-.heroContent {
+.heroLayoutNew {
   display: flex;
-  flex-direction: row; /* Side-by-side on desktop */
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between; /* Space between text and image */
-  gap: var(--spacing-xl, 48px); /* Gap between columns */
+  justify-content: space-between;
+  gap: var(--spacing-xl, 48px); /* Gap between text and image */
   max-width: 1100px; /* Container max width */
   width: 100%;
 }
 
 /* --- Left Column: Text --- */
-.heroText {
-  flex: 1; /* Adjust flex ratio if needed */
-  max-width: 550px; /* Max width for text block */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Align text left */
+.heroTextNew {
+  flex: 1; /* Take up available space */
+  max-width: 520px; /* Limit text width */
+  opacity: 0; /* Prepare for animation */
+  animation: fadeInUp 0.8s var(--transition-ease-out) 0.2s forwards;
 }
 
-.heroGreeting {
+.heroGreetingNew {
   font-family: var(--heading-font, "Poppins", sans-serif);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 500;
   color: var(--secondary-color, #6c757d);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: var(--spacing-sm, 8px);
-  opacity: 0;
-  animation: fadeInUp 0.6s var(--transition-ease-out) 0.1s forwards;
+  letter-spacing: 1.5px;
+  margin-bottom: var(--spacing-md, 16px);
+  /* Note: Individual elements don't need separate animation if parent .heroTextNew fades in */
 }
 
-.heroText h1 {
+.heroTextNew h1 {
   font-family: var(--heading-font, "Poppins", sans-serif);
-  font-size: 3.5rem; /* Adjust as needed */
+  font-size: 3.2rem; /* Adjust size */
   font-weight: 700;
   color: var(--text-color-dark, #212529);
   margin-bottom: var(--spacing-sm, 8px);
-  line-height: 1.1;
-  opacity: 0;
-  animation: fadeInUp 0.6s var(--transition-ease-out) 0.2s forwards;
+  line-height: 1.2;
 }
 
-.heroRole {
+.heroRoleNew {
+  /* Added this class for styling the role line */
   font-family: var(--heading-font, "Poppins", sans-serif);
-  font-size: 1.8rem; /* Size for role */
-  font-weight: 400; /* Lighter weight */
-  color: var(--secondary-color, #6c757d);
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: var(--secondary-color, #6c757d); /* Role in secondary color */
   margin-bottom: var(--spacing-lg, 32px);
   line-height: 1.3;
-  opacity: 0;
-  animation: fadeInUp 0.6s var(--transition-ease-out) 0.3s forwards;
 }
 
-.heroDescription {
+.heroDescriptionNew {
   font-family: var(--body-font, "Roboto", sans-serif);
-  font-size: 1rem; /* Standard body size */
+  font-size: 1rem;
   color: var(--secondary-color, #6c757d);
   margin-bottom: var(--spacing-lg, 32px);
   line-height: 1.7;
-  opacity: 0;
-  animation: fadeInUp 0.6s var(--transition-ease-out) 0.4s forwards;
 }
 
-/* --- Button Styles --- */
-.heroButtonGroup {
+/* --- Buttons --- */
+.heroButtonGroupNew {
   display: flex;
-  gap: var(--spacing-md, 16px); /* Space between buttons */
-  margin-top: var(--spacing-sm, 8px);
-  opacity: 0;
-  animation: fadeInUp 0.6s var(--transition-ease-out) 0.5s forwards;
+  gap: var(--spacing-md, 16px);
 }
 
-/* Base button style */
-.heroButtonPrimary,
-.heroButtonSecondary {
+.heroButtonNewPrimary,
+.heroButtonNewSecondary {
   font-family: var(--heading-font, "Poppins", sans-serif);
-  border: 2px solid transparent; /* Base border */
-  padding: var(--spacing-sm) var(--spacing-lg); /* Adjust padding */
-  font-size: 1rem;
+  border: 2px solid transparent;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 0.95rem;
   font-weight: 600;
-  border-radius: var(--border-radius-sm, 4px);
+  border-radius: var(--border-radius-md, 8px); /* More rounded */
   cursor: pointer;
-  text-decoration: none; /* For Links */
+  text-decoration: none;
   display: inline-block;
   transition: all var(--transition-speed, 0.2s) var(--transition-ease);
+  text-transform: capitalize;
+}
+
+.heroButtonNewPrimary {
+  /* Filled */
+  background-color: var(--primary-color, #6a4cec);
+  color: var(--text-color-light, #ffffff);
   box-shadow: var(--shadow-sm);
 }
-
-/* Primary button style (Filled) */
-.heroButtonPrimary {
-  background-color: var(--primary-color, #6a4cec); /* Example Purple */
-  color: var(--text-color-light, #ffffff);
-}
-
-.heroButtonPrimary:hover {
-  background-color: var(--primary-color-dark, #553ab6); /* Darker Purple */
+.heroButtonNewPrimary:hover {
+  background-color: var(--primary-color-dark, #553ab6);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 
-/* Secondary button style (Outline) */
-.heroButtonSecondary {
+.heroButtonNewSecondary {
+  /* Outline/Ghost */
   background-color: transparent;
   color: var(--primary-color, #6a4cec);
   border-color: var(--primary-color, #6a4cec);
 }
-
-.heroButtonSecondary:hover {
+.heroButtonNewSecondary:hover {
   background-color: var(--primary-color, #6a4cec);
   color: var(--text-color-light, #ffffff);
-  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 
-/* --- Right Column: Image & Shape --- */
-.heroImageContainer {
-  flex: 1; /* Adjust ratio if needed */
-  max-width: 450px; /* Max width for image area */
-  position: relative; /* REQUIRED for the ::before pseudo-element */
+/* --- Right Column: Image --- */
+.heroImageContainerNew {
+  flex: 1;
+  max-width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0; /* Prepare for animation */
+  animation: fadeIn 0.8s var(--transition-ease-out) 0.4s forwards;
 }
 
-/* Profile Photo (NO border) */
-.heroProfilePhoto {
-  width: 80%; /* Adjust size relative to container */
-  max-width: 300px; /* Max pixel size */
-  aspect-ratio: 1 / 1; /* Make it square for circle */
-  border-radius: var(--border-radius-lg, 50%); /* Keep Circle */
+/* Creates the thick circular border */
+.heroImageBorder {
+  width: 100%;
+  max-width: 350px;
+  aspect-ratio: 1 / 1;
+  border: 8px solid var(--primary-color, #6a4cec); /* Adjust thickness */
+  border-radius: 50%; /* Circular */
+  padding: 10px; /* Space between border and photo */
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-md); /* Add shadow to border */
+}
+
+/* The actual photo, clipped to circle */
+.heroProfilePhotoNew {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Make photo circular */
   object-fit: cover;
-  object-position: center;
-  position: relative; /* Ensure image is above pseudo-element */
-  z-index: 1;
-  box-shadow: var(--shadow-lg); /* Keep shadow for depth */
-  transition: transform var(--transition-speed-slow, 0.3s)
-      var(--transition-ease-out),
-    box-shadow var(--transition-speed-slow, 0.3s) var(--transition-ease-out);
-  opacity: 0; /* Keep for animation */
-  animation: fadeIn 0.8s var(--transition-ease-out) 0.4s forwards; /* Keep animation */
-}
-
-.heroProfilePhoto:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* The Purple Blob Shape (Using ::before pseudo-element) */
-.heroImageContainer::before {
-  content: "";
-  position: absolute;
-  inset: 0; /* Cover the container area */
-  z-index: 0; /* Position behind the image */
-  /* Approximate Blob Shape (TWEAK THESE VALUES!) */
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  /* Background Color/Gradient */
-  background: var(--primary-color, #6a4cec);
-  /* Example Gradient: */
-  /* background: linear-gradient(45deg, #8a6ff0, #6a4cec); */
-  /* Animation for the blob */
-  opacity: 0;
-  animation: fadeIn 1s var(--transition-ease-out) 0.2s forwards,
-    morph 8s ease-in-out infinite alternate; /* Subtle morphing */
+  display: block;
 }
 
 /* --- Responsiveness --- */
 @media (max-width: 992px) {
-  .heroContent {
+  .heroLayoutNew {
     gap: var(--spacing-lg);
   }
-  .heroText h1 {
-    font-size: 3rem;
+  .heroTextNew h1 {
+    font-size: 2.8rem;
   }
-  .heroRole {
-    font-size: 1.5rem;
-  }
-  .heroImageContainer {
-    max-width: 380px;
+  .heroImageBorder {
+    max-width: 300px;
+    border-width: 6px;
+    padding: 8px;
   }
 }
 
 @media (max-width: 768px) {
-  .heroContent {
-    flex-direction: column-reverse; /* Stack image above text */
+  .heroLayoutNew {
+    flex-direction: column; /* Stack vertically */
     text-align: center;
   }
-  .heroText {
-    align-items: center; /* Center text content */
+  .heroTextNew {
+    align-items: center; /* Center text elements */
     max-width: 100%;
+    order: 2; /* Text below image */
+    margin-top: var(--spacing-lg);
   }
-  .heroImageContainer {
-    margin-bottom: var(--spacing-lg); /* Space below image */
-    width: 70%; /* Adjust size */
+  .heroButtonGroupNew {
+    justify-content: center; /* Center buttons */
+  }
+  .heroImageContainerNew {
     max-width: 300px;
+    order: 1; /* Image above text */
+    width: 80%;
   }
-  .heroText h1 {
-    font-size: 2.5rem;
+  .heroImageBorder {
+    max-width: 100%;
+    border-width: 5px;
+    padding: 6px;
   }
-  .heroRole {
-    font-size: 1.3rem;
-  }
-  .heroButtonGroup {
-    justify-content: center;
-  } /* Center buttons */
-
-  /* Adjust blob size or disable morph on mobile if needed */
-  .heroImageContainer::before {
-    /* animation: fadeIn 1s var(--transition-ease-out) 0.2s forwards; */ /* Keep fade, maybe remove morph */
+  .heroTextNew h1 {
+    font-size: 2.4rem;
   }
 }
