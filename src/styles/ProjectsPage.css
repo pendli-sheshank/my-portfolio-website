@@ -195,5 +195,5 @@
   }
   .certificationsList {
     grid-template-columns: 1fr;
-  } /* Stack certs */
+  }
 }
