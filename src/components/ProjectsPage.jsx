@@ -4,50 +4,71 @@ import "../styles/ProjectsPage.css";
 
 const myProjectsData = [
   {
-    title: "BeRightHere.com (Workspace Platform)",
+    title: "Policy Management Microservices",
+    period: "2023",
     description:
-      "Front-end development for a digital platform offering workspace and meeting space solutions. Created user interfaces and integrated back-end APIs for seamless operations using React JS, Laravel, MySQL, and AWS.", // Summarized [cite: 23, 24, 25]
+      "Spring Boot microservices with secure REST APIs (JWT/OAuth2) and event streaming on Kafka; deployed on AWS using Docker & Kubernetes (Helm). Improved API latency by ~40% and enabled horizontal scaling.",
     techStack: [
-      "React JS",
-      "Laravel",
-      "MySQL",
-      "AWS",
-      "HTML",
-      "CSS",
-      "JavaScript",
+      "Java 8+",
+      "Spring Boot",
+      "Hibernate/JPA",
+      "Spring Security",
+      "Kafka",
+      "Docker",
+      "Kubernetes",
+      "AWS (EC2/S3/RDS/IAM)",
+      "Swagger/OpenAPI",
     ],
-    repoUrl: null,
-    liveUrl: null,
-    imageUrl: null,
+    highlights: [
+      "Defined clear service boundaries and API contracts; added distributed tracing/logging.",
+      "Kafka producers/consumers for policy & claims events with retry/DLQ patterns.",
+      "CI/CD via Jenkins & GitHub Actions; blue-green rollouts with Helm.",
+    ],
+    links: { demo: "#", code: "#" },
   },
   {
-    title: "Nxt Trendz (E-commerce Clone)",
+    title: "CI/CD Test Automation Pipeline",
+    period: "2022",
     description:
-      "Clone of E-commerce platforms like Amazon/Flipkart. Implemented login, product lists with search/filters/sort, product details pages using React Router. Handled authentication/authorization using JWT, REST APIs, and local storage.", // Summarized [cite: 26, 27, 28]
+      "Unified Cypress (UI) + Katalon (regression) into GitHub Actions/Jenkins with parallel runs, artifacts, and notifications. Coverage ↑30–35%, execution time ↓~25%.",
     techStack: [
-      "React JS",
-      "JS",
-      "CSS",
+      "Cypress",
+      "Katalon Studio",
+      "JUnit/Mockito",
+      "Selenium",
+      "GitHub Actions",
+      "Jenkins",
+      "Docker",
+      "Node.js",
+    ],
+    highlights: [
+      "Reusable test objects & data builders; flaky-test quarantine.",
+      "Matrix builds across browsers; HTML reports/screenshots as artifacts.",
+      "Quality gates before deploy; tagged smoke/regression suites.",
+    ],
+    links: { demo: "#", code: "#" },
+  },
+  {
+    title: "Angular 18 Admin Portal",
+    period: "2021–2023",
+    description:
+      "Admin portal using Angular 18, Reactive Forms, and role-based access. Integrated with secure Spring Boot APIs; improved UX with lazy loading and on-push change detection.",
+    techStack: [
+      "Angular 18",
+      "TypeScript",
+      "RxJS",
+      "Reactive Forms",
+      "REST",
+      "JWT/OAuth2",
+      "HTML5/CSS3",
       "Bootstrap",
-      "React Router",
-      "REST API",
-      "Local Storage",
-      "JWT",
-      "Authorization",
-      "Authentication",
     ],
-    repoUrl: null,
-    liveUrl: "https://psrnxttrendz.ccbp.tech",
-    imageUrl: null,
-  },
-  {
-    title: "Typing Speed Test",
-    description:
-      "Application measuring time taken to type a given paragraph fetched via API. Implemented dynamic timer updates using JavaScript DOM operations and included form validations.", // Summarized [cite: 29, 30, 31, 32]
-    techStack: ["HTML", "CSS", "JS", "REST API", "Bootstrap"],
-    repoUrl: null,
-    liveUrl: "http://sheshanktptest.ccbp.tech",
-    imageUrl: null,
+    highlights: [
+      "Accessible components library; robust validation and error states.",
+      "Auth interceptors with token refresh; guard-based route protection.",
+      "A11y: keyboard navigation, focus management, ARIA.",
+    ],
+    links: { demo: "#", code: "#" },
   },
 ];
 

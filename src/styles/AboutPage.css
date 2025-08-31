@@ -327,3 +327,18 @@
     font-size: 1rem;
   }
 }
+/* Make the skills list breathe without changing structure */
+.skillsListCompact li {
+  margin: 0.25rem 0;
+}
+
+/* On wider screens, make it two columns—still your same list */
+@media (min-width: 800px) {
+  .skillsListCompact {
+    column-count: 2;
+    column-gap: 2rem;
+  }
+  .skillsListCompact li {
+    break-inside: avoid;
+  }
+}

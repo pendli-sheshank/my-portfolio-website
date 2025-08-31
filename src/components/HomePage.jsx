@@ -1,45 +1,44 @@
 // src/components/HomePage.js
 import React from "react";
-import { Link } from "react-router-dom"; // For buttons/links
-import "../styles/HomePage.css"; // Link to the new CSS file
-import profilePic from "../assets/images/profile.png"; // MAKE SURE this path is correct
+import { Link } from "react-router-dom";
+import "../styles/HomePage.css";
+import profilePic from "../assets/images/profile.png"; // ensure this exists
 
 const HomePage = () => {
-  // Using concise summary text based on your resume [cite: 7]
   const descriptionText =
-    "Front-end developer with 1.5 years of experience in ReactJS, HTML, CSS, and JavaScript, skilled in developing responsive interfaces and integrating APIs. Passionate about delivering high-quality work and engaging user experiences.";
+    "Java Developer with 4+ years building robust Java/Spring Boot microservices, event-driven systems with Kafka, and cloud-native deployments on AWS. Front-end experience with Angular 16/18 and React. Obsessed with clean architecture, performance, strong testing, and reliable CI/CD.";
 
   return (
-    // Use a semantic tag like section for the hero area
     <section className="heroSectionNew">
       <div className="heroLayoutNew">
         {/* --- Left Column: Text --- */}
         <div className="heroTextNew">
-          {/* Removed accent line based on image */}
           <p className="heroGreetingNew">HELLO</p>
           <h1>
-            im Sheshank Pendli, <br /> a Software Engineer
+            I’m <span>Sheshank Pendli</span>,<br /> a{" "}
+            <span>Java Developer</span>
           </h1>
+
           <p className="heroDescriptionNew">{descriptionText}</p>
+
           <div className="heroButtonGroupNew">
             <Link to="/contact" className="heroButtonNewPrimary">
-              contact me
+              Contact Me
             </Link>
             <Link to="/projects" className="heroButtonNewSecondary">
-              browse portfolio
+              View Projects
             </Link>
+            {/* Optional: direct email as a tertiary action */}
           </div>
         </div>
 
         {/* --- Right Column: Image --- */}
         <div className="heroImageContainerNew">
-          {/* Outer div creates the purple border */}
           <div className="heroImageBorder">
-            {/* The actual photo */}
             <img
               className="heroProfilePhotoNew"
-              alt="Sheshank Pendli - Software Engineer"
-              src={profilePic} // Your imported photo
+              alt="Sheshank Pendli — Java Developer"
+              src={profilePic}
             />
           </div>
         </div>
