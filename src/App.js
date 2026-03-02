@@ -15,33 +15,40 @@ function App() {
   return (
     <AIProvider>
       <div className="App min-h-screen bg-gray-50 flex flex-col">
-        {/* Pass SmartSearch as a child or handle layout in Navbar */}
         <Navbar listOfOptions={["Home", "About", "Projects", "Resume", "Contact"]} />
 
-        {/* We can inject SmartSearch into Navbar or place it here if Navbar accepts children.
-            For now, let's assume Navbar is updated to include SmartSearch or we place it in layout.
-            Actually, let's update Navbar to include SmartSearch inside it.
-        */}
-
         <main className="flex-grow">
-            {/* Search Bar Mobile Overlay could go here */}
-            <div className="md:hidden p-4 bg-white border-b">
-                 <SmartSearch />
-            </div>
+          {/* Mobile Search */}
+          <div className="md:hidden p-4 bg-white border-b">
+            <SmartSearch />
+          </div>
 
-            <Routes>
-                <Route index path="/" element={<HomePage />} />
-                <Route path="about" element={<AboutPage />} />
-                <Route path="projects" element={<ProjectsPage />} />
-                <Route path="resume" element={<ResumePage />} />
-                <Route path="contact" element={<ContactPage />} />
-            </Routes>
+          <Routes>
+            <Route index path="/" element={<HomePage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="projects" element={<ProjectsPage />} />
+            <Route path="resume" element={<ResumePage />} />
+            <Route path="contact" element={<ContactPage />} />
+          </Routes>
         </main>
 
         <AIAssistant />
 
         <footer className="bg-white border-t border-gray-200 py-8 text-center text-gray-500 text-sm">
-            <p>© {new Date().getFullYear()} Sheshank Pendli. Built with React & Tailwind.</p>
+          <p className="font-medium text-gray-700 mb-1">Sheshank Pendli</p>
+          <p>Java Full Stack Developer · Spring Boot & Microservices Specialist · AWS & Azure</p>
+          <p className="mt-1">📍 St. Louis, MO ·{" "}
+            <a href="mailto:sheshankpendli97@gmail.com" className="text-brand-primary hover:underline">
+              sheshankpendli97@gmail.com
+            </a>{" "}·{" "}
+            <a href="https://linkedin.com/in/psheshank" target="_blank" rel="noreferrer" className="text-brand-primary hover:underline">
+              LinkedIn
+            </a>{" "}·{" "}
+            <a href="https://github.com/pendli-sheshank" target="_blank" rel="noreferrer" className="text-brand-primary hover:underline">
+              GitHub
+            </a>
+          </p>
+          <p className="mt-3 text-gray-400">© {new Date().getFullYear()} Sheshank Pendli. Built with React & Tailwind.</p>
         </footer>
       </div>
     </AIProvider>

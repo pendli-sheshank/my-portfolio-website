@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# 🌐 Sheshank Pendli — Portfolio Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio for **Sheshank Pendli**, Java Full Stack Developer & Spring Boot/Microservices Specialist with 5+ years of experience in Fintech and E-commerce.
 
-## Available Scripts
+🔗 **Live:** [sheshank.info](https://sheshank.info)  
+💼 **LinkedIn:** [linkedin.com/in/psheshank](https://linkedin.com/in/psheshank)  
+🐙 **GitHub:** [github.com/pendli-sheshank](https://github.com/pendli-sheshank)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📄 Pages
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Page | Description |
+|------|-------------|
+| **Home** | Hero with real stats: 5+ yrs, 65K events/day, 12 microservices, 100% audit ready |
+| **About** | Timeline of Centene + Accenture experience, full skills breakdown, certifications |
+| **Projects** | 6 real engineering projects with tech stacks and highlights, AI recommendations |
+| **Resume** | Interactive resume — paste a JD to highlight matching skills |
+| **Contact** | Contact form (Formspree) + email, phone, LinkedIn, GitHub |
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/pendli-sheshank/my-portfolio-website.git
+cd my-portfolio-website
+npm install
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Open [http://localhost:3000](http://localhost:3000)
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📦 Build & Deploy
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Auto-deploys to [sheshank.info](https://sheshank.info) via GitHub Pages (CNAME configured).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 📁 Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+src/
+├── components/
+│   ├── Navbar.jsx         # Sticky nav with SmartSearch
+│   ├── HomePage.jsx       # Hero, stats, tech badges
+│   ├── AboutPage.jsx      # Bio, timeline, skills, certifications
+│   ├── ProjectsPage.jsx   # 6 projects + AI recommendations
+│   ├── ResumePage.jsx     # JD matching interactive resume
+│   ├── ContactPage.jsx    # Contact info + form
+│   ├── ContactForm.jsx    # Formspree-powered form
+│   ├── ProjectCard.jsx    # Reusable project card
+│   ├── AIAssistant.jsx    # Contextual tips popup
+│   └── SmartSearch.jsx    # Navbar search with routing
+├── context/
+│   └── AIContext.js       # AI recommendations & search state
+├── styles/
+│   ├── ContactPage.css
+│   └── ContactForm.css
+└── index.css
+```
